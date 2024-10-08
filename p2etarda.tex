@@ -33,6 +33,10 @@
 \makeatother
 %\usepackage{fixdif, derivative}  % pochodne
 %\usepackage{mhchem}
+\usepackage{siunitx}
+\DeclareSIUnit{\nothing}{\relax}
+\usepackage{booktabs}
+\usepackage{tabularx}
 %\title{Hertz Vector Potentials}
 %\author{Rafał Staroszczyk}
 %\date{}
@@ -53,5 +57,51 @@
 \newcommand{\inv}[1]{\frac{1}{#1}}
 
 \begin{document}
+\section{Jednostki}
+\begin{frame}{Układ SI}
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{XX}
+			\toprule
+			Wielkość podstawowa & Jednostka \\
+			\midrule
+			Długość & metr (\unit{\m}) \\
+			Masa & kilogram (\unit{\kg}) \\
+			Czas & sekunda (\unit{\s}) \\
+			Natężenie prądu & amper (\unit{\A}) \\
+			Temperatura termodynamiczna & kelwin (\unit{\K}) \\
+			Liczność materii & mol (\unit{\mol}) \\
+			Światłość & kandela (\unit{\candela}) \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+\end{frame}
 
+\begin{frame}{Przedrostki SI}
+		\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{XXXX}
+			\toprule
+			Przedrostek & Mnożnik & Przedrostek & Mnożnik \\
+			\midrule
+			peta (\unit{\peta\nothing}) & $10^{15}$ & decy (\unit{\deci\nothing}) & $10^{-1}$ \\
+			tera (\unit{\tera\nothing}) & $10^{12}$ & centy (\unit{\centi\nothing}) & $10^{-2}$ \\
+			giga (\unit{\giga\nothing}) & $10^{9}$ & mili (\unit{\milli\nothing}) & $10^{-3}$ \\
+			mega (\unit{\mega\nothing}) & $10^{6}$ & mikro (\unit{\micro\nothing}) & $10^{-6}$ \\
+			kilo (\unit{\kilo\nothing}) & $10^{3}$ & nano (\unit{\nano\nothing}) & $10^{-9}$ \\
+			hekto (\unit{\hecto\nothing}) & $10^{2}$ & piko (\unit{\pico\nothing}) & $10^{-12}$ \\
+			deka (\unit{\deca\nothing}) & $10^{1}$ & femto (\unit{\femto\nothing}) & $10^{-15}$ \\
+			& $10^{0}$ & atto (\unit{\atto\nothing}) & $10^{-18}$ \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+\end{frame}
+\section{Wektory}
+\section{Kinematyka}
+\section{Prawa Newtona}
+\section{Tarcie}
+\section{Zasada zachowania energii}
+\section{Zasada zachowania pędu}
+\section{Ruch obrotowy}
+\section{Statyka}
 \end{document}
