@@ -1,0 +1,224 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{float}
+\usepackage{xcolor}  % kolory motywu
+\usepackage{tikz}
+\usetikzlibrary{angles}
+\usetikzlibrary{quotes}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{calligraphy}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepackage{amsmath}  % równania
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{physics2}  % pochodne, macierze itp
+\usephysicsmodule{ab}
+\usephysicsmodule{diagmat}
+\usephysicsmodule{xmat}
+\usephysicsmodule{nabla.legacy}
+\usephysicsmodule{op.legacy}
+\makeatletter
+%\newcommand\vb[1]{\@ifstar\boldsymbol\mathbf{#1}}
+\newcommand\vb[1]{\@ifstar\boldsymbol\mathbf{#1}}
+\newcommand\va[1]{\@ifstar{\vec{#1}}{\vec{\mathrm{#1}}}}
+\newcommand\vu[1]{%
+	\@ifstar{\hat{\boldsymbol{#1}}}{\hat{\boldsymbol{#1}}}}
+\makeatother
+%\usepackage{fixdif, derivative}  % pochodne
+%\usepackage{mhchem}
+\usepackage{siunitx}
+\DeclareSIUnit{\nothing}{\relax}
+\sisetup{parse-numbers = false}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\title{Układ jednostek SI}
+%\author{Rafał Staroszczyk}
+\date{}
+
+%\DeclareMathOperator{\Col}{Col}
+%\DeclareMathOperator{\Nul}{Nul}
+%\DeclareMathOperator{\arctg}{arctg}
+%\DeclareMathOperator{\tgh}{tgh}
+
+
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+\newcommand{\inv}[1]{\frac{1}{#1}}
+
+\usepackage{enumitem}
+% Środowisko zadań
+\usepackage{exercise}
+\renewcommand{\ExerciseName}{Zadanie}
+\renewcommand{\AnswerName}{Odpowiedź do zadania}
+%\renewcommand{\ExerciseHeader}{\noindent{%
+%\textbf{\large\ExerciseHeaderDifficulty\ExerciseName\ %
+%\ExerciseHeaderNB\ExerciseHeaderTitle\ExerciseHeaderOrigin}}}
+%\renewcommand{\AnswerHeader}{\noindent{\textbf{\AnswerName\ %
+%\ExerciseHeaderNB}} }
+\renewcommand{\theExePart}{(\alph{ExePart})\quad}
+\renewcommand{\ExePartName}{}
+\renewcommand{\ExePartHeader}{%
+\indent{\ExePartHeaderDifficulty\ExePartName%
+\ExePartHeaderNB\ExePartHeaderTitle}}
+%\numberwithin{Exercise}{section}
+%\numberwithin{Answer}{section}
+
+\begin{document}
+\maketitle
+\section{Jednostki podstawowe}
+W układzie wykorzystuje się 7 jednostek podstawowych:
+\begin{table}[H]
+\centering
+\begin{tabular}{rl}
+\toprule
+Wielkość podstawowa & Jednostka podstawowa \\
+\midrule
+długość & metr (\unit{\m}) \\
+masa & kilogram (\unit{\kg}) \\
+czas & sekunda (\unit{\s}) \\
+natężenie prądu elektrycznego & amper (\unit{\A}) \\
+temperatura termodynamiczna & kelwin (\unit{\K}) \\
+liczność materii & mol (\unit{\mol}) \\
+światłość & kandela (\unit{\candela}) \\
+\bottomrule
+\end{tabular}
+\caption{Jednostki podstawowe}
+\end{table}
+Jednostki takie jak amper i kelwin zapisuje się z małej litery według wymowy, a nie jak nazwiska Amp\`{e}re oraz Kelvin. Symbole się nie odmieniają $\qty{2}{\mol}$, ale czyta się $2$ mole. \par
+\section{Jednostki pochodne}
+Z jednostek podstawowych można skonstruować jednostki pochodne, na przykład:
+\begin{table}[H]
+\centering
+\begin{tabular}{rl}
+\toprule
+Wielkość podstawowa & Jednostka podstawowa \\
+\midrule
+miara kąta płaskiego & radian (\unit{\radian=\m\per\m}) \\
+miara kąta bryłowego & steradian (\unit{\steradian=\m\squared\per\m\squared}) \\
+częstotliwość & herc (\unit{\Hz=\s^{-1}}) \\
+siła & niuton (\unit{\newton=\kg.\m.\s^{-2}}) \\
+ciśnienie & paskal (\unit{\pascal=\newton\per\metre\squared=\kg.\m^{-1}.\s^{-2}}) \\
+energia & dżul (\unit{\J=\newton.\m=\kg.\m^{2}.\s^{-2}}) \\
+moc & wat (\unit{\watt=\joule\per\s=\kg.\m^{2}.\s^{-3}}) \\
+napięcie elektryczne & wolt (\unit{\volt=\joule\per\coulomb=\kg.\m^{2}.\s^{-3}.\A^{-1}}) \\
+strumień świetlny & lumen (\unit{\lumen=\candela.\steradian=\candela}) \\
+natężenie oświetlenia & luks (\unit{\lux=\lumen\per\m\squared=\candela.\m^{-2}}) \\
+aktywność promieniotwórcza & bekerel (\unit{\becquerel=\s^{-1}}) \\
+\bottomrule
+\end{tabular}
+\caption{Przykładowe jednostki pochodne}
+\end{table}
+Jednostki, które wyglądają na identyczne, np. \unit{\hertz} oraz \unit{\becquerel}, w rzeczywistości nie są, ponieważ występują jako miara innych procesów. \unit{\hertz} jako ilość cykli w fali, która jest zjawiskiem ciągłym, a \unit{\becquerel} jako ilość rozpadów promieniotwórczych na sekundę, co jest zjawiskiem losowym. \par
+\section{Przedrostki układu SI}
+Do każdej jednostki podstawowej oraz pochodnej można dodać przedrostek oznaczający potęgę $10$. 
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{XXXX}
+\toprule
+Przedrostek & Mnożnik & Przedrostek & Mnożnik \\
+\midrule
+deka (\unit{\deca\nothing}) & $10^{1}$ & decy (\unit{\deci\nothing}) & $10^{-1}$ \\
+hekto (\unit{\hecto\nothing}) & $10^{2}$ & centy (\unit{\centi\nothing}) & $10^{-2}$ \\
+kilo (\unit{\kilo\nothing}) & $10^{3}$ & mili (\unit{\milli\nothing}) & $10^{-3}$ \\
+mega (\unit{\mega\nothing}) & $10^{6}$ & mikro (\unit{\micro\nothing}) & $10^{-6}$ \\
+giga (\unit{\giga\nothing}) & $10^{9}$ & nano (\unit{\nano\nothing}) & $10^{-9}$ \\
+tera (\unit{\tera\nothing}) & $10^{12}$ & piko (\unit{\pico\nothing}) & $10^{-12}$ \\
+peta (\unit{\peta\nothing}) & $10^{15}$ & femto (\unit{\femto\nothing}) & $10^{-15}$ \\
+eksa (\unit{\exa\nothing}) & $10^{18}$ & atto (\unit{\atto\nothing}) & $10^{-18}$ \\
+zetta (\unit{\zetta\nothing}) & $10^{21}$ & zepto (\unit{\zepto\nothing}) & $10^{-21}$ \\
+jotta (\unit{\yotta\nothing}) & $10^{24}$ & jokto (\unit{\yocto\nothing}) & $10^{-24}$ \\
+ronna (\unit{\ronna\nothing}) & $10^{27}$ & ronto (\unit{\ronto\nothing}) & $10^{-27}$ \\
+quetta (\unit{\quetta\nothing}) & $10^{30}$ & quecto (\unit{\quecto\nothing}) & $10^{-30}$ \\
+\bottomrule
+\end{tabularx}
+\caption{Przedrostki układu SI}
+\end{table}
+W każdej jednostce można użyć tylko jednego przedrostka. Aby uniknąć pomyłek powinno się pisać przedrostek razem z jednostką, a każde jednostki oddzielone, \unit{\milli\second} to milisekunda, a \unit{\metre.\second} to metr razy sekunda. W przypadku potęg przedrostek odnosi się do niepotęgowanej jednostki, \unit{\femto\metre\squared} jest równy $\qty{10^{-30}}{\metre\squared}$, a nie $\qty{10^{-15}}{\metre\squared}$. 
+\section{Przykładowe zadania}\setlength{\parindent}{0pt}
+\begin{Exercise}[number={24}]
+\ExePart $\qty{980}{\peta\second}$;
+\ExePart $\qty{980}{\femto\second}$;
+\ExePart $\qty{17}{\nano\second}$;
+\ExePart $\qty{577}{\micro\second}$.
+\end{Exercise}
+
+\begin{Answer}
+\begin{enumerate}[label={(\alph*)}, noitemsep]
+\item $\qty{980}{\peta\second} = \qty{980*10^{15}}{\second} = \qty{9,80*10^{17}}{\second}$; 
+\item $\qty{980}{\femto\second} = \qty{980*10^{-15}}{\second} = \qty{9,80*10^{-13}}{\second}$;
+\item $\qty{17}{\nano\second} = \qty{17*10^{-9}}{\second} = \qty{1,7*10^{-8}}{\second}$;
+\item $\qty{577}{\micro\second} = \qty{577*10^{-6}}{\second} = \qty{5,77*10^{-4}}{\second}$.
+\end{enumerate}
+\end{Answer}
+
+\begin{Exercise}[number={25}]
+\ExePart $\qty{9,57*10^{5}}{\second}$;
+\ExePart $\qty{0,045}{\second}$;
+\ExePart $\qty{5,5*10^{-7}}{\second}$;
+\ExePart $\qty{3,16*10^{7}}{\second}$.
+\end{Exercise}
+
+\begin{Answer}
+\begin{enumerate}[label={(\alph*)}, noitemsep]
+\item $\qty{9,57*10^{5}}{\second} = \qty{957*10^{3}}{\second} = \qty{957}{\kilo\second}$;
+\item $\qty{0,045}{\second} = \qty{45*10^{-3}}{\second} = \qty{45}{\milli\second}$;
+\item $\qty{5,5*10^{-7}}{\second} = \qty{550*10^{-9}}{\second} = \qty{550}{\nano\second}$;
+\item $\qty{3,16*10^{7}}{\second} = \qty{31,6*10^{6}}{\second} = \qty{31,6}{\mega\second}$.
+\end{enumerate}
+\end{Answer}
+
+\begin{Exercise}[number={26}]
+\ExePart $\qty{89}{\tera\metre}$;
+\ExePart $\qty{89}{\pico\metre}$;
+\ExePart $\qty{711}{\milli\metre}$;
+\ExePart $\qty{0,45}{\micro\metre}$.
+\end{Exercise}
+
+\begin{Answer}
+\begin{enumerate}[label={(\alph*)}, noitemsep]
+\item $\qty{89}{\tera\metre} = \qty{89*10^{12}}{\metre} = \qty{8,9*10^{13}}{\metre}$;
+\item $\qty{89}{\pico\metre} = \qty{89*10^{-12}}{\metre} = \qty{8,9*10^{-11}}{\metre}$;
+\item $\qty{711}{\milli\metre} = \qty{711*10^{-3}}{\metre} = \qty{7,11*10^{-1}}{\metre}$;
+\item $\qty{0,45}{\micro\metre} = \qty{0,45*10^{-6}}{\metre} = \qty{4,5*10^{-7}}{\metre}$.
+\end{enumerate}
+\end{Answer}
+
+\begin{Exercise}[number={30}]
+\ExePart $\qty{10*{21}}{\m^{3}}$ w $\unit{\km^{3}}$;
+\ExePart $\qty{10*{21}}{\m^{3}}$ w $\unit{\cm^{3}}$.
+\end{Exercise}
+
+\begin{Answer}
+\begin{enumerate}[label={(\alph*)}, noitemsep]
+\item $\qty{10*{21}}{\m^{3}} = \qty{10^{21}}{(10^{-3}\km)^{3}} = \qty{10^{21}*10^{-9}}{\km^{3}} = \qty{10^{12}}{\km^{3}}$;
+\item $\qty{10*{21}}{\m^{3}} = \qty{10^{21}}{(10^{2}\cm)^{3}} = \qty{10^{21}*10^{6}}{\cm^{3}} = \qty{10^{27}}{\cm^{3}}$.
+\end{enumerate}
+\end{Answer}
+
+\begin{Exercise}[number={32}]
+$\qty{33}{\m/\s}$ w $\unit{\km/\hour}$.
+\end{Exercise}
+
+\begin{Answer}
+$\qty{33}{\m/\s} = \qty{33}{\frac{10^{-3}\km}{\inv{3600}\hour}} = \qty{33*\frac{3600}{1000}}{\km/\hour} = \qty{118,8}{\km/\hour}$.
+\end{Answer}
+
+\begin{Exercise}[number={41}]
+$\qty{10*{18}}{\kg/m^{3}}$ w $\unit{\mega\gram/\micro\litre}$.
+\end{Exercise}
+
+\begin{Answer}
+$\qty{1}{\kg} = \qty{10^{3}}{\gram} = \qty{10^{-3}*10^{6}}{\gram} = \qty{10^{-3}}{\mega\gram}$ \\
+$\qty{1}{\m^{3}} = \qty{10^{6}}{\cm^{3}} = \qty{10^{6}}{\milli\litre} = \qty{10^{3}}{\litre} = \qty{10^{9}}{\micro\litre}$ \\
+$\qty{10^{18}}{\kg/m^{3}} = \qty{10^{18}}{\frac{10^{-3}\mega\gram}{10^{9}\micro\litre}} = \qty{10^{6}}{\mega\gram/\micro\litre}$
+\end{Answer}
+\end{document}
