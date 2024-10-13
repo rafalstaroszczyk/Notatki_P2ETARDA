@@ -35,6 +35,7 @@
 %\usepackage{mhchem}
 \usepackage{siunitx}
 \DeclareSIUnit{\nothing}{\relax}
+\sisetup{parse-numbers = false}
 \usepackage{booktabs}
 \usepackage{tabularx}
 %\title{Hertz Vector Potentials}
@@ -96,6 +97,31 @@
 		\end{tabularx}
 	\end{table}
 \end{frame}
+
+\begin{frame}
+	\begin{block}{}
+		\begin{equation*}
+			\qty{6}{\km} = ?\unit{\cm}
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{}
+		\begin{equation*}
+			\qty{6}{\km} = \qty{6}{\km}*\frac{\qty{10^{3}}{\m}}{\qty{1}{\km}}*\frac{\qty{10^{2}}{\cm}}{\qty{1}{\m}} = \qty{6*10^{5}}{\cm}
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{}
+		\begin{equation*}
+			\qty{9}{\km} = ?\unit{\cm}
+		\end{equation*}
+	\end{block}
+\end{frame}
+
 \section{Wektory}
 \section{Kinematyka}
 \section{Prawa Newtona}
