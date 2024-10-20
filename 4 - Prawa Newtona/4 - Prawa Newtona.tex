@@ -1,0 +1,225 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{float}
+\usepackage{xcolor}  % kolory motywu
+\usepackage{tikz}
+\usetikzlibrary{angles}
+\usetikzlibrary{quotes}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{calligraphy}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepackage{amsmath}  % równania
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{physics2}  % pochodne, macierze itp
+\usephysicsmodule{ab}
+\usephysicsmodule{diagmat}
+\usephysicsmodule{xmat}
+\usephysicsmodule{nabla.legacy}
+\usephysicsmodule{op.legacy}
+\makeatletter
+%\newcommand\vb[1]{\@ifstar\boldsymbol\mathbf{#1}}
+\newcommand\vb[1]{\@ifstar\boldsymbol\mathbf{#1}}
+\newcommand\va[1]{\@ifstar{\vec{#1}}{\vec{\mathrm{#1}}}}
+\newcommand\vu[1]{%
+	\@ifstar{\hat{\boldsymbol{#1}}}{\hat{\boldsymbol{#1}}}}
+\makeatother
+\usepackage{fixdif, derivative}  % pochodne
+%\usepackage{mhchem}
+\usepackage{siunitx}
+\DeclareSIUnit{\nothing}{\relax}
+\sisetup{parse-numbers = false}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\title{Prawa Newtona}
+%\author{Rafał Staroszczyk}
+\date{}
+
+%\DeclareMathOperator{\Col}{Col}
+%\DeclareMathOperator{\Nul}{Nul}
+%\DeclareMathOperator{\arctg}{arctg}
+%\DeclareMathOperator{\tgh}{tgh}
+
+
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+\newcommand{\inv}[1]{\frac{1}{#1}}
+
+\usepackage{enumitem}
+% Środowisko zadań
+\usepackage{exercise}
+\renewcommand{\ExerciseName}{Zadanie}
+\renewcommand{\AnswerName}{Odpowiedź do zadania}
+%\renewcommand{\ExerciseHeader}{\noindent{%
+%\textbf{\large\ExerciseHeaderDifficulty\ExerciseName\ %
+%\ExerciseHeaderNB\ExerciseHeaderTitle\ExerciseHeaderOrigin}}}
+%\renewcommand{\AnswerHeader}{\noindent{\textbf{\AnswerName\ %
+%\ExerciseHeaderNB}} }
+\renewcommand{\theExePart}{(\alph{ExePart})\quad}
+\renewcommand{\ExePartName}{}
+\renewcommand{\ExePartHeader}{%
+\indent{\ExePartHeaderDifficulty\ExePartName%
+\ExePartHeaderNB\ExePartHeaderTitle}}
+%\numberwithin{Exercise}{section}
+%\numberwithin{Answer}{section}
+
+\begin{document}
+\maketitle
+\section{Masa}
+Masa od roku 1799 była zdefiniowana poprzez fizyczny obiekt, odważnik platynowy. Od roku 1889 podobnie przez inny odważnik platynowo irydowy. W roku 2019 znów przedefiniowano kilogram tak, aby nie odwoływał się do fizycznego obiektu, a do stałych fizycznych. Ta definicja jednak nie jest przydatna bez mechaniki kwantowej, więc przyjmę, że wciąz jest to obiekt fizyczny. \\
+Aby porównać dwie masy można przykładowo wykorzystać wagę bezwładnościową. Dwa odważniki są zamocowane na końcach pręta, a w jego środku przyczepiona jest linka. Gdy zadziałamy siła na linkę i pręt sie nie obróci to możemy wywnioskować, że obie masy są identyczne z symetrii układu. Alternatywnie zamiast działać siłą na linkę, można umieścic układ w polu grawitacyjnym, korzystając z faktu, że każde ciało, niezależnie od masy, doświadcza takiego samego przyspieszenia. Jest to klasyczna waga grawitacyjna. Taki układ nie jest praktyczny, aby odmierzyć dowolną wielkość masy, ale wystarcza do analizy fizycznej.
+
+\section{Treść Praw}
+\begin{center}
+\begin{enumerate}
+\item Jeżeli na ciało nie działają siły zewnętrzne lub działające siły równoważą się, to ciało pozostaje w spoczynku lub porusza się ruchem jednostajnym prostoliniowym. 
+\begin{equation}
+\vb{F}_{wyp} = 0 \iff \vb{v} = \text{const.}
+\end{equation}
+\item Przyspieszenie ciała jest wprost proporcjonalne do siły wypadkowej, ma również ten sam kierunek co siła, natomiast jest odwrotnie proporcjonalne do masy ciała. Możemy to zapisać w formie równania: 
+\begin{equation}
+\vb{a} = \frac{\vb{F}_{wyp}}{m}.
+\end{equation}
+Lub inaczej: 
+\begin{equation}
+\vb{F}_{wyp} = \sum \vb{F} = m\vb{a}.
+\end{equation}
+\item Jeżeli jedno ciało działa na drugie pewną siłą, to drugie ciało działa na pierwsze siłą o takim samym kierunku i wartości, lecz przeciwnym zwrocie. Matematycznie, jeżeli ciało A działa siłą $\vb{F}$ na ciało B, wówczas jednocześnie ciało B, działa na ciało A siłą $-\vb{F}$. Wektorowo można to zapisać jako 
+\begin{equation}
+\vb{F}_{AB} = -\vb{F}_{BA}.
+\end{equation}
+\end{enumerate}
+\end{center}
+
+\section{Układ inercyjny}
+\begin{center}
+Jeżeli w jakimś układzie spełniona jest pierwsza zadana dynamiki Newtona, to układ ten jest układem inercjalnym. Dowolny inny układ, który porusza się ruchem jednostajnym prostoliniowym i się nie obraca względem pewnego układu inercjalnego również jest inercjalny. Nie ma jednego uprzywilejowanego układu inercjalnego i prawa fizyki działają w ten sam sposób w każdym z nich. 
+\end{center}
+
+\section{Siła}
+Siła jest wielkością wektorową, zdefiniowaną poprzez drugą zasadę dynamiki Newtona. Jednostką siły jest niuton $\unit{\newton}=\unit{\kilo\gram\metre\per\second\squared}$, który jest taką siła, aby ciału o masie \qty{1}{\kg} nadać przyspieszenie \qty{1}{\m/\second\squared}. Bardziej praktycznym sposobem pomiaru siły jest pomiar pośredni wykorzystujący jakieś odkształcenie pod wpływem siły, na przykład rozciągająca się sprężyna, która w zakresie sprężystym w przybliżeniu spełnia zależność liniową zwaną prawem Hooke'a:
+\begin{equation}
+F = -kx,
+\end{equation}
+gdzie $k$ to stała opisująca sprężynę, a $x$ to wychylenie z położenia równowagi w kierunku osi sprężyny. Minus oznacza, że działająca siła będzie miała przeciwny zwrot do wychylenia.
+
+\section{Inna forma drugiej zasady dynamiki Newtona}
+Prędkość jest zdefiniowana jako $\vb{v} = \odv{\vb{r}}{t}$, a przyspieszenie $\vb{a} = \odv{\vb{v}}{t}$. Przyjmując, że masa jest stała, co jest prawdziwe w mechanice klasycznej:
+\begin{equation}\label{eq:Fdpdt}
+\vb{F} = m\vb{a} = m\odv{\vb{v}}{t} = \odv{(m\vb{v})}{t} = \odv{\vb{p}}{t},
+\end{equation}
+gdzie $\vb{p} = m\vb{v}$ jest pędem. Taka definicja będzie przydatna w późniejszych wzorach. Jest ona też bardziej ogólna, ponieważ uwzględnia ciała bezmasowe, które mają pęd, tj. fotony oraz jest to wzor wykorzystywany w szczególnej teorii względności.
+
+\section{Alternatywna definicja siły}
+Powyżej przedstawiono definicję siły poprzez drugą zasadę Newtona. Przy takiej definicji siła grawitacji wyrażona jest wzorem:
+\begin{equation}\label{eq:grawitacja}
+F = G\frac{m_{1}m_{2}}{r^{2}},
+\end{equation}
+gdzie $G \approx \qty{6,67.10^{-11}}{\m^{3}.\kg^{-1}.\s^{-2}}$ to stała grawitacji. Alternatywnie można zdefiniować siłe za pomocą tego prawa powszechnego ciążenia:
+\begin{equation}
+\tilde{F} = \frac{m_{1}m_{2}}{r^{2}}.
+\end{equation}
+Jak będzie wyglądać druga zasada dynamiki Newtona?
+
+\section{Siły rzeczywiste a pozorne}
+W fizyce wyróżnia się cztery oddziaływania:
+\begin{enumerate}
+\item Oddziaływanie grawitacyjne;
+\item Oddziaływanie elektromagnetyczne;
+\item Oddziaływanie silne;
+\item Oddziaływanie słabe.
+\end{enumerate}
+Oddziaływania silne i słabe występują jedynie w skali jąder atomowych i podobnych cząstek. Każdą z doświadczanych przez nas sił można przypisać albo do grawitacji, albo elektromagnetyzmu. Przykładowo siła nacisku oraz reakcji podłoża jest związana z odpychaniem się naładowanych jąder i elektronów w ciałach. Jeżeli jakiejś sile można przypisać jedno z oddziaływań podstawowych to jest to siła rzeczywista, jeśli nie jest to siła pozorna wynikająca z wyboru nieinercjalnego układu odniesienia. Układy nieinercjalne to takie, które przyspieszają względem układów inercjalnych, albo poprzez zmianę wartości prędkości, albo kierunku, albo obydwa jednocześnie. \par
+Siła związana z przyspieszeniem układu to siła bezwładności dana wzorem:
+\begin{equation}
+\vb{F}_{B} = -m\vb{a}.
+\end{equation}
+Jest ona wybrana w taki sposób, aby rozwiązanie było jednakowe dla układów inercjalnych i nieinercjalnych.
+
+\section{Problem grawitacji w układach inercjalnych}
+W klasycznej teorii grawitacji Newtona jest ona siłą wyrażoną wzorem \eqref{eq:grawitacja}. Układ inercjalny (pomijając niewielkie wpływy związanie z obrotem planety itp.) jest stacjonarny względem ziemii lub porusza się ruchem jednostajnym prostoliniowym względem niej. \par
+W relatywistycznej teorii grawitacji Einsteina jest to zakrzywienie czasoprzestrzeni, przez co nie jest to siła, a układy inercjalne to takie w spadku swobodnym. \par
+W pewnym sensie więc siła grawitacji jest siłą bezwładnośći związaną z przyspieszającym układem odniesienia.
+
+\section{Układ wielu cząstek}
+Niech na każdą cząstkę działają siły między sobą nawzajem oraz siła zewnętrzna. Wykorzystując wtedy \eqref{eq:Fdpdt} mamy:
+\begin{equation}
+\odv{\vb{p}_{k}}{t} = \sum_{j \neq k} \vb{F}_{kj} + \vb{F}_{k}^{zew}.
+\end{equation}
+Pochodna całkowitego pędu:
+\begin{equation}
+\odv{\vb{P}}{t} = \sum_{k} \odv{\vb{p}_{k}}{t} = \sum_{k} \sum_{j \neq k} \vb{F}_{kj} + \sum_{k} \vb{F}_{k}^{zew}.
+\end{equation}
+W wyrażeniu $\sum_{k} \sum_{j \neq k} \vb{F}_{kj}$ występuje zarówno $\vb{F}_{kj}$ jak i $\vb{F}_{jk}$, można więc ograniczyć sumę do:
+\begin{equation}
+\odv{\vb{P}}{t} = \sum_{k} \sum_{j > k} \bab{\vb{F}_{kj} + \vb{F}_{jk}} + \vb{F}^{zew}.
+\end{equation}
+Z trzeciej zasady dynamiki mamy $\vb{F}_{kj} + \vb{F}_{jk} = 0$, więc:
+\begin{equation}
+\odv{\vb{P}}{t} = \vb{F}_{k}^{zew}.
+\end{equation}
+Stąd układ takich ciał zachowuje się jak pojedyncze ciało o masie $M = \sum_{k} m_{k}$.
+
+Zapiszmy położenia wielu cząstek jako
+\begin{equation}
+\vb{r}_{k} = \vb{R} + \vb{r'}_{k}.
+\end{equation}
+Wtedy ich prędkości to odpowiednio
+\begin{equation}
+\vb{v}_{k} = \vb{V} + \vb{v'}_{k},
+\end{equation}
+a pędy
+\begin{gather}
+m_{k}\vb{v}_{k} = m_{k}\vb{V} + m_{k}\vb{v'}_{k}, \\
+\vb{p}_{k} = m_{k}\vb{V} + \vb{p'}_{k}.
+\end{gather}
+Pęd całkowity ma postać:
+\begin{equation}
+\begin{split}
+\vb{P} &= \sum_{k} \vb{p}_{k} = \sum_{k} m_{k}\vb{v}_{k} = \\
+&= \sum_{k} m_{k}\vb{V} + \sum_{k} m_{k}\vb{v'}_{k}.
+\end{split}
+\end{equation}
+Jako, że wektor $\vb{R}$ możemy wybrać dowolnie możemy wybrać taki, aby ${\sum_{k} m_{k}\vb{v'}_{k} = 0}$. Narzuca to warunek:
+\begin{equation}
+\begin{split}
+\sum_{k} m_{k}\vb{v}_{k} = \sum_{k} m_{k}\vb{V} \\
+\vb{V} = \inv{\sum_{k} m_{k}} \sum_{k} m_{k}\vb{v}_{k} \\
+\odv{}{t} \vb{R} = \odv{}{t} \inv{M} \sum_{k} m_{k}\vb{r}_{k}.
+\end{split}
+\end{equation}
+Mamy stąd, że:
+\begin{align}
+M &= \sum_{k} m_{k}, & \vb{R} &= \inv{M} \sum_{k} m_{k}\vb{r}_{k}, & \vb{V} &= \odv{\vb{R}}{t}, & \vb{P} &= M\vb{V}.
+\end{align}
+Wektor $\vb{R}$ jest wektorem wodzącym środka masy układu. Pozwala to rozdzielić opis zjawiska na ruch makroskopowy, opisany całkowitą siłą zewnętrzną, całkowitą masa i podobnymi wielkościami, oraz na ruch wewnątrz ciała.
+
+\section{Układ dwóch cząstek}
+Dla dwóch punktów materialnych w położeniach $\vb{r}_{1}$ oraz $\vb{r}_{2}$ możemy wyróżnić ruch na ruch układuoraz ruch względny cząstek według poprzedniej analizy, ale zamiast wyznaczać położenia $\vb{r'}_{k}$ względem środka masy wprowadzamy:
+\begin{equation}
+\vb{r} = \vb{r}_{1} - \vb{r}_{2}.
+\end{equation}
+Jest to lepszy wybór, ponieważ wiele sił zależy jedynie od odległości między cząsteczkami. \par
+Jeżeli na cząstkę pierwszą działa siła ${\vb{F}_{12} = m_{1}\vb{{a}}_{1}}$, a na drugą ${\vb{F}_{21} = m_{2}\vb{{a}}_{2}}$, przy czym ${\vb{F}_{12} = -\vb{F}_{21}}$ to mamy:
+\begin{equation}
+m_{1}\vb{a}_{1} = -m_{2}\vb{a}_{2} \Rightarrow \vb{a}_{2} = -\frac{m_{1}}{m_{2}} \vb{a}_{1}.
+\end{equation}
+Przyspieszenie względne cząstek to druga pochodna ${\vb{r}}$:
+\begin{equation}
+\vb{a} = \vb{a}_{1} - \vb{a}_{2} = \pab{1 + \frac{m_{1}}{m_{2}}} \vb{a}_{1} = \frac{m_{1} + m_{2}}{m_{1}m_{2}}\vb{F}_{12} = \frac{\vb{F}_{12}}{\mu},
+\end{equation}
+gdzie ${\mu = \frac{m_{1}m_{2}}{m_{1} + m_{2}}}$ to masa zredukowana. Spełnia ona również ${\inv{\mu} = \inv{m_{1}} + \inv{m_{2}}}$.
+
+\section{Siła sprężystości}
+
+
+\end{document}
