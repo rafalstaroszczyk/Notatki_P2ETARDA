@@ -34,6 +34,7 @@
 %\usepackage{mhchem}
 \usepackage{siunitx}
 \DeclareSIUnit{\nothing}{\relax}
+\DeclareSIUnit{\ly}{ly}
 \sisetup{parse-numbers = false}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -93,7 +94,8 @@ liczność materii & mol (\unit{\mol}) \\
 \end{tabular}
 \caption{Jednostki podstawowe}
 \end{table}
-Jednostki takie jak amper i kelwin zapisuje się z małej litery według wymowy, a nie jak nazwiska Amp\`{e}re oraz Kelvin. Symbole się nie odmieniają $\qty{2}{\mol}$, ale czyta się $2$ mole. \par
+Jednostki takie jak amper i kelwin zapisuje się z małej litery według wymowy, a nie jak nazwiska Amp\`{e}re oraz Kelvin. Symbole się nie odmieniają $\qty{2}{\mol}$, ale czyta się $2$ mole.
+
 \section{Jednostki pochodne}
 Z jednostek podstawowych można skonstruować jednostki pochodne, na przykład:
 \begin{table}[H]
@@ -117,7 +119,8 @@ aktywność promieniotwórcza & bekerel (\unit{\becquerel=\s^{-1}}) \\
 \end{tabular}
 \caption{Przykładowe jednostki pochodne}
 \end{table}
-Jednostki, które wyglądają na identyczne, np. \unit{\hertz} oraz \unit{\becquerel}, w rzeczywistości nie są, ponieważ występują jako miara innych procesów. \unit{\hertz} jako ilość cykli w fali, która jest zjawiskiem ciągłym, a \unit{\becquerel} jako ilość rozpadów promieniotwórczych na sekundę, co jest zjawiskiem losowym. \par
+Jednostki, które wyglądają na identyczne, np. \unit{\hertz} oraz \unit{\becquerel}, w rzeczywistości nie są, ponieważ występują jako miara innych procesów. \unit{\hertz} jako ilość cykli w fali, która jest zjawiskiem ciągłym, a \unit{\becquerel} jako ilość rozpadów promieniotwórczych na sekundę, co jest zjawiskiem losowym.
+
 \section{Przedrostki układu SI}
 Do każdej jednostki podstawowej oraz pochodnej można dodać przedrostek oznaczający potęgę $10$. 
 \begin{table}[H]
@@ -142,7 +145,8 @@ quetta (\unit{\quetta\nothing}) & $10^{30}$ & quecto (\unit{\quecto\nothing}) & 
 \end{tabularx}
 \caption{Przedrostki układu SI}
 \end{table}
-W każdej jednostce można użyć tylko jednego przedrostka. Aby uniknąć pomyłek powinno się pisać przedrostek razem z jednostką, a każde jednostki oddzielone, \unit{\milli\second} to milisekunda, a \unit{\metre.\second} to metr razy sekunda. W przypadku potęg przedrostek odnosi się do niepotęgowanej jednostki, \unit{\femto\metre\squared} jest równy $\qty{10^{-30}}{\metre\squared}$, a nie $\qty{10^{-15}}{\metre\squared}$. 
+W każdej jednostce można użyć tylko jednego przedrostka. Aby uniknąć pomyłek powinno się pisać przedrostek razem z jednostką, a każde jednostki oddzielone, \unit{\milli\second} to milisekunda, a \unit{\metre.\second} to metr razy sekunda. W przypadku potęg przedrostek odnosi się do niepotęgowanej jednostki, \unit{\femto\metre\squared} jest równy $\qty{10^{-30}}{\metre\squared}$, a nie $\qty{10^{-15}}{\metre\squared}$.
+
 \section{Przykładowe zadania}\setlength{\parindent}{0pt}
 \begin{Exercise}[number={24}]
 \ExePart $\qty{980}{\peta\second}$;
@@ -221,4 +225,22 @@ $\qty{1}{\kg} = \qty{10^{3}}{\gram} = \qty{10^{-3}*10^{6}}{\gram} = \qty{10^{-3}
 $\qty{1}{\m^{3}} = \qty{10^{6}}{\cm^{3}} = \qty{10^{6}}{\milli\litre} = \qty{10^{3}}{\litre} = \qty{10^{9}}{\micro\litre}$ \\
 $\qty{10^{18}}{\kg/m^{3}} = \qty{10^{18}}{\frac{10^{-3}\mega\gram}{10^{9}\micro\litre}} = \qty{10^{6}}{\mega\gram/\micro\litre}$
 \end{Answer}
+
+\section{Jednostki poza układem SI, ale powszechne}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{XXX}
+\toprule
+Jednostka & Symbol & Wartość w SI \\
+\midrule
+angstrem & $\unit{\angstrom}$ & $\qty{10^{-10}}{\meter}$ \\
+jednostka astronomiczna & $\unit{\astronomicalunit}$ & $\qty{149597870700}{\meter}$ \\
+rok świetlny & $\unit{\ly}$ & $\qty{9,4607 * 10^{15}}{\meter}$ \\
+tona & $\unit{\tonne}$ & $\qty{10^{3}}{\kg}$ \\
+jednostka masy atomowej (dalton) & $\unit{\atomicmassunit} = \unit{\dalton}$ & $\qty{1,660539\ldots}{\kg}$ \\
+
+\bottomrule
+\end{tabularx}
+\caption{Jednostki pozaukładowe}
+\end{table}
 \end{document}
