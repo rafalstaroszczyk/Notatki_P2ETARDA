@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{float}
+\usepackage{xcolor}  % kolory motywu
+\usepackage{tikz}
+\usetikzlibrary{angles}
+\usetikzlibrary{quotes}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{calligraphy}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepackage{amsmath}  % równania
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{physics2}  % pochodne, macierze itp
+\usephysicsmodule{ab}
+\usephysicsmodule{diagmat}
+\usephysicsmodule{xmat}
+\usephysicsmodule{nabla.legacy}
+\usephysicsmodule{op.legacy}
+\makeatletter
+%\newcommand\vb[1]{\@ifstar\boldsymbol\mathbf{#1}}
+\newcommand\vb[1]{\@ifstar\boldsymbol\mathbf{#1}}
+\newcommand\va[1]{\@ifstar{\vec{#1}}{\vec{\mathrm{#1}}}}
+\newcommand\vu[1]{%
+	\@ifstar{\hat{\boldsymbol{#1}}}{\hat{\boldsymbol{#1}}}}
+\makeatother
+\usepackage{fixdif, derivative}  % pochodne
+%\usepackage{mhchem}
+\usepackage{siunitx}
+\DeclareSIUnit{\nothing}{\relax}
+\sisetup{parse-numbers = false}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\title{Prawa Newtona}
+%\author{Rafał Staroszczyk}
+\date{}
+
+%\DeclareMathOperator{\Col}{Col}
+%\DeclareMathOperator{\Nul}{Nul}
+%\DeclareMathOperator{\arctg}{arctg}
+%\DeclareMathOperator{\tgh}{tgh}
+
+
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+\newcommand{\inv}[1]{\frac{1}{#1}}
+
+\usepackage{enumitem}
+% Środowisko zadań
+\usepackage{exercise}
+\renewcommand{\ExerciseName}{Zadanie}
+\renewcommand{\AnswerName}{Odpowiedź do zadania}
+%\renewcommand{\ExerciseHeader}{\noindent{%
+%\textbf{\large\ExerciseHeaderDifficulty\ExerciseName\ %
+%\ExerciseHeaderNB\ExerciseHeaderTitle\ExerciseHeaderOrigin}}}
+%\renewcommand{\AnswerHeader}{\noindent{\textbf{\AnswerName\ %
+%\ExerciseHeaderNB}} }
+\renewcommand{\theExePart}{(\alph{ExePart})\quad}
+\renewcommand{\ExePartName}{}
+\renewcommand{\ExePartHeader}{%
+\indent{\ExePartHeaderDifficulty\ExePartName%
+\ExePartHeaderNB\ExePartHeaderTitle}}
+%\numberwithin{Exercise}{section}
+%\numberwithin{Answer}{section}
+
+\begin{document}
+\maketitle
+Tarcie jest siłą niekonserwatywną, która "opiera" się ruchowi. Wyróżniamy dwa rodzaje siły tarcia: statyczna, gdy ciała nie poruszają się względem siebie, oraz kinetyczna, gdy się poruszają. 
+\section{Siła tarcia kinetycznego}
+Wielkość siły tarcia kinetycznego zależy jedynie od siły nacisku prostopadłej do powierzchni oraz współczynnika tarcia kinetycznego:
+\begin{equation}
+T_{k} = \mu_{k} N.
+\end{equation}
+Wielkość ta nie zależy od pola powierzchni, ani prędkości. Jest zawsze skierowana przeciwnie do ruchu. 
+
+\section{Siła tarcia statycznego}
+Wystepuje w przypadku braku ruchu. Wynika z tego, że jest to również funkcja działającej siły. Siła tarcia statycznego opisana jest wzorem:
+\begin{equation}
+T_{s} \leq T_{s,max} = \mu_{s} N,
+\end{equation}
+gdzie $T_{s.max}$ to maksymalna wartość siły tarcia, po przekroczeniu której rozpoczyna się ruch. Jest skierowana przeciwnie do działającej siły zewnętrznej. 
+\end{document}
